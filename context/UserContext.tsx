@@ -37,7 +37,7 @@ export function UserProvider({ children }: Props) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://backend-five-pied-88.vercel.app//api/me", {
+    fetch("https://backend-five-pied-88.vercel.app/api/me", {
       credentials: "include",
     })
       .then((res) => {
