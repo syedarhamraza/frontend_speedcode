@@ -53,6 +53,7 @@ export default function LoginPage() {
       const meRes = await fetch(
         "https://backend-five-pied-88.vercel.app/api/me",
         {
+          method: "GET",
           credentials: "include",
         }
       );
