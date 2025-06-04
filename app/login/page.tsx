@@ -34,7 +34,7 @@ export default function LoginPage() {
     setLoading(true);
     try {
       const res = await fetch(
-        "https://backend-five-pied-88.vercel.app//api/login",
+        "https://backend-five-pied-88.vercel.app/api/login",
         {
           method: "POST",
           credentials: "include",
@@ -51,7 +51,7 @@ export default function LoginPage() {
       }
 
       const meRes = await fetch(
-        "https://backend-five-pied-88.vercel.app//api/me",
+        "https://backend-five-pied-88.vercel.app/api/me",
         {
           credentials: "include",
         }
