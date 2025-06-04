@@ -38,7 +38,6 @@ export function UserProvider({ children }: Props) {
 
   useEffect(() => {
     fetch("https://backend-five-pied-88.vercel.app/api/me", {
-      method: "GET",
       credentials: "include",
     })
       .then((res) => {
