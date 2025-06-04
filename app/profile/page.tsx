@@ -19,7 +19,9 @@ export default function Profile() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch("/api/user/profile", { credentials: "include" })
+    fetch("https://backend-five-pied-88.vercel.app/api/profile", {
+      credentials: "include",
+    })
       .then((res) => res.json())
       .then((data) => {
         setName(data.name);
@@ -40,12 +42,15 @@ export default function Profile() {
 
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:4000/api/profile", {
-        method: "PUT",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email }),
-      });
+      const res = await fetch(
+        "https://backend-five-pied-88.vercel.app//api/profile",
+        {
+          method: "PUT",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email }),
+        }
+      );
 
       if (res.ok) {
         toast.success("Profile updated!", {

@@ -39,12 +39,15 @@ export default function SubmitScore() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:4000/api/submit", {
-        method: "POST",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ score: parsedScore }),
-      });
+      const res = await fetch(
+        "https://backend-five-pied-88.vercel.app/api/submit",
+        {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ score: parsedScore }),
+        }
+      );
 
       if (res.ok) {
         toast.success("Score submitted successfully!", {

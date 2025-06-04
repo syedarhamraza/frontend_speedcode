@@ -37,12 +37,15 @@ export default function RegisterPage() {
 
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:4000/api/register", {
-        method: "POST",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
-      });
+      const res = await fetch(
+        "https://backend-five-pied-88.vercel.app/api/register",
+        {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, password }),
+        }
+      );
 
       if (!res.ok) {
         toast.error("Registration failed");
@@ -50,9 +53,12 @@ export default function RegisterPage() {
       }
 
       // ✅ Fetch the user info and update context
-      const meRes = await fetch("http://localhost:4000/api/me", {
-        credentials: "include",
-      });
+      const meRes = await fetch(
+        "https://backend-five-pied-88.vercel.app/api/me",
+        {
+          credentials: "include",
+        }
+      );
 
       if (!meRes.ok) throw new Error("Failed to fetch user");
 

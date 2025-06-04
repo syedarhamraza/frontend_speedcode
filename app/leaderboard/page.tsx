@@ -16,7 +16,7 @@ export default function Leaderboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/leaderboard")
+    fetch("https://backend-five-pied-88.vercel.app//api/leaderboard")
       .then((res) => res.json())
       .then((res) => {
         setData(res);

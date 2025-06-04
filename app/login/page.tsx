@@ -33,12 +33,15 @@ export default function LoginPage() {
 
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:4000/api/login", {
-        method: "POST",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, rememberMe }),
-      });
+      const res = await fetch(
+        "https://backend-five-pied-88.vercel.app//api/login",
+        {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password, rememberMe }),
+        }
+      );
 
       if (!res.ok) {
         toast.error("Login failed", {
@@ -47,9 +50,12 @@ export default function LoginPage() {
         return;
       }
 
-      const meRes = await fetch("http://localhost:4000/api/me", {
-        credentials: "include",
-      });
+      const meRes = await fetch(
+        "https://backend-five-pied-88.vercel.app//api/me",
+        {
+          credentials: "include",
+        }
+      );
 
       if (!meRes.ok) {
         throw new Error("Failed to fetch user");
