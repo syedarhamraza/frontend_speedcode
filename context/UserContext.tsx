@@ -37,7 +37,7 @@ export function UserProvider({ children }: Props) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/user/me", { credentials: "include" })
+    fetch("http://localhost:4000/api/me", { credentials: "include" })
       .then((res) => {
         if (!res.ok) throw new Error("Not logged in");
         return res.json();
@@ -50,7 +50,7 @@ export function UserProvider({ children }: Props) {
   // Logout function
   const logout = async () => {
     try {
-      const res = await fetch("api/auth/logout", {
+      const res = await fetch("http://localhost:4000/api/logout", {
         method: "POST",
         credentials: "include",
       });
