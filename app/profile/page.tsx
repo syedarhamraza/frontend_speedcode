@@ -43,7 +43,7 @@ export default function Profile() {
     setLoading(true);
     try {
       const res = await fetch(
-        "https://backend-five-pied-88.vercel.app//api/profile",
+        "https://backend-five-pied-88.vercel.app/api/profile",
         {
           method: "PUT",
           credentials: "include",
