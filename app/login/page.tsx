@@ -68,7 +68,7 @@ export default function LoginPage() {
         description: `Welcome back, ${userData.name}`,
       });
 
-      router.push("/submit");
+      router.push("/");
     } catch {
       toast.error("Network error. Please try again later.");
     } finally {
