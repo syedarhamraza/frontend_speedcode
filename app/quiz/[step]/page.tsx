@@ -12,6 +12,7 @@ interface Question {
   question: string;
   correct_answer: string;
   incorrect_answers: string[];
+  category: string;
 }
 
 export default function QuizStep() {
@@ -48,13 +49,18 @@ export default function QuizStep() {
 
   if (!questions[index]) return <Spinner />;
 
+  const currentQuestion = questions[index] as Question;
+
   return (
     <ProtectedRoute>
-      <div className="p-6">
+      <div className="min-h-screen flex items-center justify-center px-4 py-8 bg-muted">
         <QuestionCard
-          question={questions[index].question}
+          question={currentQuestion.question}
           answers={shuffledAnswers}
           onSelect={handleSelect}
+          current={index + 1}
+          total={questions.length}
+          category={currentQuestion.category}
         />
       </div>
     </ProtectedRoute>
