@@ -9,7 +9,8 @@ import { useWindowSize } from "react-use";
 import { useRouter } from "next/navigation";
 
 export default function ResultPage() {
-  const { answers, score } = useQuiz();
+  const { score, questions, answers, setAnswers, setScore, setCurrentStep } =
+    useQuiz();
   const [submitted, setSubmitted] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -18,10 +19,17 @@ export default function ResultPage() {
   const router = useRouter();
 
   useEffect(() => {
-    if (answers.length === 0) {
-      router.replace("/"); // redirect if no quiz taken
+    if (questions.length === 0 || answers.length !== questions.length) {
+      router.replace("/");
+    } else {
+      // Reset state after viewing result
+      setTimeout(() => {
+        setAnswers([]);
+        setScore(0);
+        setCurrentStep(0);
+      }, 500); // allow render before wiping
     }
-  }, [answers, router]);
+  }, [questions, answers, router, setAnswers, setScore, setCurrentStep]);
 
   useEffect(() => {
     setIsMounted(true);

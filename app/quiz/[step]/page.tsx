@@ -25,13 +25,6 @@ export default function QuizStep() {
   const index = parseInt(params.step as string, 10);
   const [shuffledAnswers, setShuffledAnswers] = useState<string[]>([]);
 
-  // 🚫 Redirect if quiz is already completed
-  useEffect(() => {
-    if (answers.length === questions.length) {
-      router.replace("/"); // force back to home
-    }
-  }, [answers, questions.length, router]);
-
   // ✅ Shuffle answers when question changes
   useEffect(() => {
     const q = questions[index] as Question | undefined;
