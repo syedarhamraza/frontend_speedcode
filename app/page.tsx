@@ -4,6 +4,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@/context/UserContext";
+import QuizOptions from "@/components/QuizOptions";
 
 export default function Home() {
   const { user } = useUser();
@@ -44,6 +45,9 @@ export default function Home() {
                 </Button>
               </Link>
             )}
+
+            <br />
+            <QuizOptions />
           </div>
         </div>
       </main>

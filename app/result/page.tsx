@@ -1,8 +1,51 @@
 "use client";
 import { useQuiz } from "@/context/QuizContext";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export default function ResultPage() {
   const { answers, score } = useQuiz();
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    const submitScore = async () => {
+      try {
+        const res = await fetch(
+          "https://backend-five-pied-88.vercel.app/api/submit",
+          {
+            method: "POST",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ score }),
+          }
+        );
+
+        if (res.ok) {
+          toast.success("Score submitted successfully!", {
+            className: "text-base px-6 py-4",
+            duration: 3000,
+          });
+          setSubmitted(true);
+        } else {
+          toast.error("Submission failed or already submitted", {
+            className: "text-base px-6 py-4",
+            duration: 5000,
+          });
+        }
+      } catch {
+        toast.error("Network error", {
+          className: "text-base px-6 py-4",
+          duration: 5000,
+        });
+      }
+    };
+
+    if (!submitted && answers.length > 0) {
+      submitScore();
+    }
+  }, [score, answers, submitted]);
 
   return (
     <div className="p-6 space-y-6">
