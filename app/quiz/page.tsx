@@ -19,9 +19,6 @@ export default function Home() {
 
             {/* Quiz Options Section */}
             <div className="mt-10">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-2">
-                Ready to Start a Quiz?
-              </h2>
               <QuizOptions />
             </div>
           </div>

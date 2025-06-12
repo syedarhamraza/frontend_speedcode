@@ -37,7 +37,7 @@ export default function QuizStep() {
       ...answers,
       { question: q.question, correct: q.correct_answer, selected: ans },
     ]);
-    if (ans === q.correct_answer) setScore(score + 10);
+    if (ans === q.correct_answer) setScore(score + 1);
     if (index + 1 < questions.length) {
       setCurrentStep(index + 1);
       router.push(`/quiz/${index + 1}`);

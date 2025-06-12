@@ -104,7 +104,10 @@ export default function QuizOptions() {
         ))}
       </select>
 
-      <Button onClick={handleStart} className="w-full">
+      <Button
+        onClick={handleStart}
+        className="w-full bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition cursor-pointer"
+      >
         Start Quiz
       </Button>
     </div>
