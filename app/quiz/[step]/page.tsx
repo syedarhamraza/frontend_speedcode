@@ -5,6 +5,8 @@ import { useQuiz } from "@/context/QuizContext";
 import QuestionCard from "@/components/QuestionCard";
 import { shuffle } from "lodash";
 import { useEffect, useState } from "react";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import Spinner from "@/components/Spinner";
 
 interface Question {
   question: string;
@@ -35,7 +37,7 @@ export default function QuizStep() {
       ...answers,
       { question: q.question, correct: q.correct_answer, selected: ans },
     ]);
-    if (ans === q.correct_answer) setScore(score + 1);
+    if (ans === q.correct_answer) setScore(score + 10);
     if (index + 1 < questions.length) {
       setCurrentStep(index + 1);
       router.push(`/quiz/${index + 1}`);
@@ -44,15 +46,17 @@ export default function QuizStep() {
     }
   };
 
-  if (!questions[index]) return <p>Loading...</p>;
+  if (!questions[index]) return <Spinner />;
 
   return (
-    <div className="p-6">
-      <QuestionCard
-        question={questions[index].question}
-        answers={shuffledAnswers}
-        onSelect={handleSelect}
-      />
-    </div>
+    <ProtectedRoute>
+      <div className="p-6">
+        <QuestionCard
+          question={questions[index].question}
+          answers={shuffledAnswers}
+          onSelect={handleSelect}
+        />
+      </div>
+    </ProtectedRoute>
   );
 }

@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import { getCategories, getQuestions } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { useQuiz } from "@/context/QuizContext";
+import { useUser } from "@/context/UserContext";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 interface Category {
   id: number;
@@ -13,12 +15,13 @@ interface Category {
 
 export default function QuizOptions() {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [category, setCategory] = useState("9"); // General Knowledge
+  const [category, setCategory] = useState("9"); // Default: General Knowledge
   const [difficulty, setDifficulty] = useState("easy");
   const [amount, setAmount] = useState("5");
 
   const { token, setQuestions, setCurrentStep, setScore, setAnswers } =
     useQuiz();
+  const { user } = useUser();
   const router = useRouter();
 
   useEffect(() => {
@@ -46,8 +49,27 @@ export default function QuizOptions() {
     router.push("/quiz/0");
   };
 
+  if (!user) {
+    return (
+      <div className="bg-white border border-gray-300 p-6 rounded-lg shadow-md text-center max-w-md mx-auto">
+        <p className="text-gray-600 mb-4">
+          Please log in to start a quiz session.
+        </p>
+        <Link href="/login">
+          <Button className="w-full bg-blue-600 text-white hover:bg-blue-700">
+            Login to Start
+          </Button>
+        </Link>
+      </div>
+    );
+  }
+
   return (
-    <div className="space-y-4 max-w-md mx-auto p-4">
+    <div className="space-y-4 max-w-md mx-auto p-4 bg-white border border-gray-300 rounded-lg shadow-md">
+      <h2 className="text-xl font-semibold text-gray-800 text-center">
+        Start a New Quiz
+      </h2>
+
       <select
         onChange={(e) => setCategory(e.target.value)}
         value={category}
