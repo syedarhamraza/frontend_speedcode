@@ -1,5 +1,6 @@
 "use client";
 import { useQuiz } from "@/context/QuizContext";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -64,15 +65,9 @@ export default function ResultPage() {
         <tbody>
           {answers.map((item, idx) => (
             <tr key={idx} className="border">
-              <td className="border px-4 py-2">
-                {decodeURIComponent(item.question)}
-              </td>
-              <td className="border px-4 py-2">
-                {decodeURIComponent(item.selected)}
-              </td>
-              <td className="border px-4 py-2">
-                {decodeURIComponent(item.correct)}
-              </td>
+              <td className="border px-4 py-2">{item.question}</td>
+              <td className="border px-4 py-2">{item.selected}</td>
+              <td className="border px-4 py-2">{item.correct}</td>
               <td className="border px-4 py-2">
                 {item.selected === item.correct ? "✅" : "❌"}
               </td>
@@ -80,6 +75,14 @@ export default function ResultPage() {
           ))}
         </tbody>
       </table>
+      <div className="mt-4">
+        <Link
+          href="/"
+          className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+        >
+          Home
+        </Link>
+      </div>
     </div>
   );
 }

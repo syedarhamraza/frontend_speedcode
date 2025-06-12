@@ -12,7 +12,7 @@ interface Props {
 export default function QuestionCard({ question, answers, onSelect }: Props) {
   return (
     <div className="space-y-4 bg-white p-6 rounded-xl shadow">
-      <h2 className="text-xl font-semibold">{decodeURIComponent(question)}</h2>
+      <h2 className="text-xl font-semibold">{question}</h2>
       <div className="grid gap-3">
         {answers.map((ans, i) => (
           <Button
@@ -21,7 +21,7 @@ export default function QuestionCard({ question, answers, onSelect }: Props) {
             className="w-full text-left"
             variant="outline"
           >
-            {decodeURIComponent(ans)}
+            {ans}
           </Button>
         ))}
       </div>
