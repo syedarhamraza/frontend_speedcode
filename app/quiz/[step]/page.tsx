@@ -25,6 +25,14 @@ export default function QuizStep() {
   const index = parseInt(params.step as string, 10);
   const [shuffledAnswers, setShuffledAnswers] = useState<string[]>([]);
 
+  // 🚫 Redirect if quiz is already completed
+  useEffect(() => {
+    if (answers.length === questions.length) {
+      router.replace("/"); // force back to home
+    }
+  }, [answers, questions.length, router]);
+
+  // ✅ Shuffle answers when question changes
   useEffect(() => {
     const q = questions[index] as Question | undefined;
     if (!q) return;
@@ -32,6 +40,7 @@ export default function QuizStep() {
     setShuffledAnswers(choices);
   }, [index, questions]);
 
+  // ✅ Handle answer selection
   const handleSelect = (ans: string) => {
     const q = questions[index] as Question;
     setAnswers([
@@ -39,6 +48,7 @@ export default function QuizStep() {
       { question: q.question, correct: q.correct_answer, selected: ans },
     ]);
     if (ans === q.correct_answer) setScore(score + 1);
+
     if (index + 1 < questions.length) {
       setCurrentStep(index + 1);
       router.push(`/quiz/${index + 1}`);
@@ -47,6 +57,7 @@ export default function QuizStep() {
     }
   };
 
+  // 🌀 Show loading if question isn't ready
   if (!questions[index]) return <Spinner />;
 
   const currentQuestion = questions[index] as Question;
