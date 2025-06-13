@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import { toast } from "sonner";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import { Loader2 } from "lucide-react";
 
 // Zod schema for profile validation
 const profileSchema = z.object({
@@ -31,13 +32,10 @@ export default function Profile() {
   }, []);
 
   const updateProfile = async () => {
-    // Validate with Zod
     const result = profileSchema.safeParse({ name, email });
+
     if (!result.success) {
-      toast.error(result.error.errors[0].message, {
-        className: "text-base px-6 py-4",
-        duration: 5000,
-      });
+      toast.error(result.error.errors[0].message);
       return;
     }
 
@@ -54,58 +52,64 @@ export default function Profile() {
       );
 
       if (res.ok) {
-        toast.success("Profile updated!", {
-          className: "text-base px-6 py-4",
-          duration: 3000,
-        });
+        toast.success("Your profile has been updated!");
       } else {
-        toast.error("Update failed", {
-          className: "text-base px-6 py-4",
-          duration: 5000,
-        });
+        toast.error("Failed to update profile.");
       }
     } catch {
-      toast.error("Network error", {
-        className: "text-base px-6 py-4",
-        duration: 5000,
-      });
+      toast.error("Network error. Please try again later.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <>
-      <ProtectedRoute>
-        <Navbar />
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
-          <div className="w-full max-w-md space-y-6 bg-white p-6 shadow-md rounded">
-            <h1 className="text-2xl font-semibold text-center">
-              Update Profile
-            </h1>
+    <ProtectedRoute>
+      <Navbar />
+      <main className="min-h-screen flex items-center justify-center bg-white text-black px-4 py-12">
+        <div className="w-full max-w-md bg-white border border-gray-200 shadow-md rounded-lg p-6 sm:p-8 space-y-6">
+          <div className="space-y-2 text-center">
+            <h1 className="text-3xl font-bold">Your Profile</h1>
+            <p className="text-gray-600 text-sm">
+              Feel free to update your information anytime.
+            </p>
+          </div>
+
+          <div className="space-y-4">
             <Input
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Name"
+              placeholder="Full Name"
               required
             />
             <Input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
+              placeholder="Email Address"
               type="email"
               required
             />
+          </div>
+
+          <div className="pt-2">
             <Button
-              className="w-full bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition cursor-pointer"
               onClick={updateProfile}
               disabled={loading}
+              className="w-full bg-black text-white hover:bg-gray-900 transition"
             >
-              {loading ? "Saving..." : "Save Changes"}
+              {loading ? (
+                <Loader2 className="h-5 w-5 animate-spin mx-auto" />
+              ) : (
+                "Save Changes"
+              )}
             </Button>
           </div>
+
+          <p className="text-xs text-center text-gray-500">
+            Keep your profile up to date for a better experience
+          </p>
         </div>
-      </ProtectedRoute>
-    </>
+      </main>
+    </ProtectedRoute>
   );
 }

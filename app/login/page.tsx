@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import { useUser } from "@/context/UserContext";
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -26,8 +27,7 @@ export default function LoginPage() {
     const result = loginSchema.safeParse({ email, password });
 
     if (!result.success) {
-      const msg = result.error.errors[0].message;
-      toast.error(msg);
+      toast.error(result.error.errors[0].message);
       return;
     }
 
@@ -57,9 +57,7 @@ export default function LoginPage() {
         }
       );
 
-      if (!meRes.ok) {
-        throw new Error("Failed to fetch user");
-      }
+      if (!meRes.ok) throw new Error("Failed to fetch user");
 
       const userData = await meRes.json();
       setUser(userData);
@@ -79,9 +77,10 @@ export default function LoginPage() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="w-full max-w-md space-y-6 bg-white p-6 shadow-md rounded">
+      <main className="min-h-screen flex items-center justify-center bg-white text-black px-4 py-10">
+        <div className="w-full max-w-md space-y-6 bg-white p-6 border border-gray-200 shadow-sm rounded-md sm:p-8">
           <h1 className="text-2xl font-semibold text-center">Login</h1>
+
           <Input
             placeholder="Email"
             type="email"
@@ -96,25 +95,30 @@ export default function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <label className="inline-flex items-center space-x-2">
+
+          <label className="inline-flex items-center space-x-2 text-sm text-gray-700">
             <input
               type="checkbox"
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
-              className="form-checkbox"
+              className="form-checkbox accent-black"
             />
             <span>Remember Me</span>
           </label>
 
           <Button
-            className="w-full bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition cursor-pointer"
+            className="w-full bg-black text-white hover:bg-gray-900 transition"
             onClick={login}
             disabled={loading}
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading ? (
+              <Loader2 className="h-5 w-5 animate-spin mx-auto" />
+            ) : (
+              "Login"
+            )}
           </Button>
         </div>
-      </div>
+      </main>
     </>
   );
 }

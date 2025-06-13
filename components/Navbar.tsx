@@ -45,11 +45,11 @@ export default function Navbar() {
   const NavLink = ({ href, label }: { href: string; label: string }) => (
     <Link href={href} onClick={() => setSheetOpen(false)}>
       <Button
-        variant={pathname === href ? "default" : "ghost"}
+        variant="ghost"
         className={`w-full justify-start text-sm font-medium ${
           pathname === href
-            ? "bg-blue-600 text-white hover:bg-blue-700"
-            : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+            ? "bg-black text-white"
+            : "text-gray-800 hover:text-black"
         }`}
       >
         {label}
@@ -58,12 +58,10 @@ export default function Navbar() {
   );
 
   return (
-    <nav className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-sm">
+    <nav className="bg-white border-b border-gray-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
         {/* Logo */}
-        <h1 className="text-xl font-bold text-blue-600 dark:text-blue-400">
-          🎯 QuizSprint
-        </h1>
+        <h1 className="text-xl font-bold text-black">QuizSprint</h1>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-4">
@@ -71,19 +69,18 @@ export default function Navbar() {
             <div key={link.href} className="flex items-center">
               <Button
                 asChild
-                variant={pathname === link.href ? "default" : "ghost"}
+                variant="ghost"
                 className={`text-sm font-medium ${
                   pathname === link.href
-                    ? "bg-blue-600 text-white hover:bg-blue-700"
-                    : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    ? "bg-black text-white"
+                    : "text-gray-800 hover:text-black"
                 }`}
               >
                 <Link href={link.href}>{link.label}</Link>
               </Button>
 
-              {/* Add separator after Profile (last link) */}
               {index === links.length - 1 && (
-                <div className="h-6 w-px bg-gray-300 dark:bg-gray-600 mx-2" />
+                <div className="h-6 w-px bg-gray-300 mx-2" />
               )}
             </div>
           ))}
@@ -97,20 +94,22 @@ export default function Navbar() {
                       {user.name.slice(0, 2).toUpperCase()}
                     </AvatarFallback>
                   </Avatar>
-                  <span className="font-medium text-sm text-gray-700 dark:text-gray-200">
+                  <span className="font-medium text-sm text-gray-900">
                     {user.name}
                   </span>
                 </div>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuLabel>Account</DropdownMenuLabel>
+                <DropdownMenuLabel className="text-black">
+                  Account
+                </DropdownMenuLabel>
                 <DropdownMenuItem asChild>
                   <Link href="/profile">Profile</Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   onClick={handleLogout}
-                  className="text-red-600 focus:text-red-600"
+                  className="text-red-600 hover:text-red-700"
                 >
                   Logout
                 </DropdownMenuItem>
@@ -121,22 +120,22 @@ export default function Navbar() {
               <>
                 <Button
                   asChild
-                  variant={pathname === "/login" ? "default" : "ghost"}
+                  variant="ghost"
                   className={`text-sm font-medium ${
                     pathname === "/login"
-                      ? "bg-blue-600 text-white hover:bg-blue-700"
-                      : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                      ? "bg-black text-white"
+                      : "text-gray-800 hover:text-black"
                   }`}
                 >
                   <Link href="/login">Login</Link>
                 </Button>
                 <Button
                   asChild
-                  variant={pathname === "/register" ? "default" : "ghost"}
+                  variant="ghost"
                   className={`text-sm font-medium ${
                     pathname === "/register"
-                      ? "bg-blue-600 text-white hover:bg-blue-700"
-                      : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                      ? "bg-black text-white"
+                      : "text-gray-800 hover:text-black"
                   }`}
                 >
                   <Link href="/register">Register</Link>
@@ -146,18 +145,18 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Mobile Nav - Hamburger */}
+        {/* Mobile Nav */}
         <div className="md:hidden">
           <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6 text-gray-700 dark:text-gray-200" />
+                <Menu className="h-6 w-6 text-black" />
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="p-4 space-y-4">
               <SheetHeader>
-                <SheetTitle className="text-lg font-bold text-blue-600 dark:text-blue-400">
-                  🏆 Student Leaderboard
+                <SheetTitle className="text-lg font-bold text-black">
+                  🎯 QuizSprint
                 </SheetTitle>
               </SheetHeader>
 
@@ -167,7 +166,7 @@ export default function Navbar() {
 
               {!loading && user ? (
                 <div className="pt-4 border-t">
-                  <p className="text-sm text-gray-700 dark:text-gray-200 mb-2">
+                  <p className="text-sm text-gray-800 mb-2">
                     Logged in as:{" "}
                     <span className="font-medium">{user.name}</span>
                   </p>

@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-gray-50 flex flex-col justify-center items-center px-4 py-16 space-y-16 text-center">
+      <main className="min-h-screen bg-gray-100 flex flex-col justify-center items-center px-4 py-16 space-y-16 text-center">
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: -15 }}
@@ -20,8 +20,8 @@ export default function Home() {
           transition={{ duration: 0.6 }}
           className="space-y-6 max-w-2xl"
         >
-          <h1 className="text-5xl font-extrabold text-gray-900">
-            🎯 QuizSprint
+          <h1 className="text-5xl font-extrabold text-gray-900 lg:text-6xl">
+            QuizSprint
           </h1>
           <p className="text-lg text-gray-600">
             Challenge yourself with quizzes, rise through the ranks, and track
@@ -29,12 +29,12 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/quiz">
-              <Button className="bg-purple-600 text-white p-6 text-lg hover:bg-purple-700 transition cursor-pointer">
+              <Button className="bg-black border-1 border-black text-white p-6 text-lg hover:bg-gray-800 transition cursor-pointer">
                 Start Quiz
               </Button>
             </Link>
             <Link href="/leaderboard">
-              <Button className=" bg-blue-600 text-white p-6 text-lg hover:bg-blue-700 transition cursor-pointer">
+              <Button className="bg-white border-1 border-black text-black p-6 text-lg hover:bg-gray-100 transition cursor-pointer">
                 View Leaderboard
               </Button>
             </Link>
@@ -45,7 +45,7 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="mt-6 bg-yellow-100 text-yellow-800 p-4 rounded-lg shadow text-sm"
+              className="mt-6 bg-white text-black p-4 rounded-lg shadow text-sm"
             >
               🎯 Want to track your scores and compete?{" "}
               <Link href="/register" className="underline font-medium">

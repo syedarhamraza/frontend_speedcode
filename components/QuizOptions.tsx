@@ -56,7 +56,7 @@ export default function QuizOptions() {
           Please log in to start a quiz session.
         </p>
         <Link href="/login">
-          <Button className="w-full bg-blue-600 text-white hover:bg-blue-700">
+          <Button className="w-full bg-black text-white hover:bg-gray-900 transition cursor-pointer">
             Login to Start
           </Button>
         </Link>
