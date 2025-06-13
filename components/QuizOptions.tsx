@@ -72,7 +72,7 @@ export default function QuizOptions() {
         <div className="space-y-1 text-center">
           <h2 className="text-3xl font-bold">Customize Your Quiz</h2>
           <p className="text-gray-600 text-sm">
-            Choose what you want to be quizzed on and let’s get started! 🚀
+            Choose what you want to be quizzed on and let’s get started!
           </p>
         </div>
 
@@ -135,7 +135,7 @@ export default function QuizOptions() {
         </Button>
 
         <p className="text-xs text-center text-gray-500">
-          Learn, challenge yourself, and track your score 🎯
+          Learn, challenge yourself, and track your score
         </p>
       </div>
     </main>
