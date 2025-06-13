@@ -29,11 +29,11 @@ export default function Leaderboard() {
   const getCardStyles = (index: number) => {
     switch (index) {
       case 0:
-        return "bg-yellow-100 border border-yellow-400";
+        return "bg-white border border-gray-200";
       case 1:
-        return "bg-gray-200 border border-gray-400";
+        return "bg-white border border-gray-200";
       case 2:
-        return "bg-amber-200 border border-amber-400";
+        return "bg-white border border-gray-200";
       default:
         return "bg-white border border-gray-200";
     }
