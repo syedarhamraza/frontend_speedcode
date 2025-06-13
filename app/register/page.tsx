@@ -81,7 +81,7 @@ export default function RegisterPage() {
       <main className="min-h-screen flex items-center justify-center bg-white text-black px-4 py-10">
         <div className="w-full max-w-md bg-white border border-gray-200 shadow-md rounded-lg p-6 sm:p-8 space-y-6">
           <div className="text-center space-y-1">
-            <h1 className="text-3xl font-bold">Create an Account 📝</h1>
+            <h1 className="text-3xl font-bold">Create an Account</h1>
             <p className="text-sm text-gray-600">
               Sign up and start your quiz journey!
             </p>
