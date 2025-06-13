@@ -21,7 +21,7 @@ export default function Home() {
           className="space-y-6 max-w-2xl"
         >
           <h1 className="text-5xl font-extrabold text-gray-900 lg:text-6xl">
-            QuizSprint
+            Quiz Sprint
           </h1>
           <p className="text-lg text-gray-600">
             Challenge yourself with quizzes, rise through the ranks, and track
@@ -29,12 +29,12 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/quiz">
-              <Button className="bg-black border-1 border-black text-white p-6 text-lg hover:bg-gray-800 transition cursor-pointer">
+              <Button className="bg-black border-1 border-black text-white lg:p-6 lg:text-lg hover:bg-gray-800 transition cursor-pointer">
                 Start Quiz
               </Button>
             </Link>
             <Link href="/leaderboard">
-              <Button className="bg-white border-1 border-black text-black p-6 text-lg hover:bg-gray-100 transition cursor-pointer">
+              <Button className="bg-white border-1 border-black text-black lg:p-6 lg:text-lg hover:bg-gray-100 transition cursor-pointer">
                 View Leaderboard
               </Button>
             </Link>

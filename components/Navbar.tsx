@@ -156,7 +156,7 @@ export default function Navbar() {
             <SheetContent side="left" className="p-4 space-y-4">
               <SheetHeader>
                 <SheetTitle className="text-lg font-bold text-black">
-                  🎯 QuizSprint
+                  Quiz Sprint
                 </SheetTitle>
               </SheetHeader>
 
