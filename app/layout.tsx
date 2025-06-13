@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Student Leaderboard",
-  description: "A Student leaderboard app",
+  title: "Quiz Sprint",
+  description: "A fun and engaging quiz platform to test your knowledge!",
 };
 
 export default function RootLayout({
