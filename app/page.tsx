@@ -47,7 +47,7 @@ export default function Home() {
               transition={{ delay: 0.5 }}
               className="mt-6 bg-white text-black p-4 rounded-lg shadow text-sm"
             >
-              🎯 Want to track your scores and compete?{" "}
+              Want to track your scores and compete?{" "}
               <Link href="/register" className="underline font-medium">
                 Create an account
               </Link>{" "}
