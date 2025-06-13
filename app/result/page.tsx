@@ -37,9 +37,7 @@ export default function ResultPage() {
           {
             method: "POST",
             credentials: "include",
-            headers: {
-              "Content-Type": "application/json",
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ score }),
           }
         );
@@ -75,43 +73,36 @@ export default function ResultPage() {
         <Confetti width={width} height={height} />
       )}
 
-      <div className="w-full max-w-5xl bg-white border border-gray-200 p-6 md:p-10 rounded-2xl shadow-md space-y-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-center text-gray-900">
-          🎉 Your Score: <span className="text-green-600">{score}</span> /{" "}
-          {answers.length}
-        </h1>
+      <div className="w-full max-w-5xl bg-white border border-gray-200 p-6 md:p-10 rounded-2xl shadow-md space-y-10">
+        <div className="text-center space-y-2">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+            🎉 Your Score: <span className="text-green-600">{score}</span> /{" "}
+            {answers.length}
+          </h1>
+          <p className="text-sm text-gray-600">
+            Here&apos;s a breakdown of how you did on each question.
+          </p>
+        </div>
 
         <div className="overflow-x-auto rounded-lg border border-gray-200">
           <table className="w-full text-sm md:text-base border-collapse">
             <thead className="bg-gray-50 text-gray-600">
               <tr>
-                <th className="border border-gray-200 px-4 py-3 text-left">
-                  Question
-                </th>
-                <th className="border border-gray-200 px-4 py-3 text-left">
-                  Your Answer
-                </th>
-                <th className="border border-gray-200 px-4 py-3 text-left">
-                  Correct Answer
-                </th>
-                <th className="border border-gray-200 px-4 py-3 text-center">
-                  Result
-                </th>
+                <th className="border px-4 py-3 text-left">Question</th>
+                <th className="border px-4 py-3 text-left">Your Answer</th>
+                <th className="border px-4 py-3 text-left">Correct Answer</th>
+                <th className="border px-4 py-3 text-center">Result</th>
               </tr>
             </thead>
             <tbody>
               {answers.map((item, idx) => (
-                <tr key={idx} className="bg-white even:bg-gray-50 text-black">
-                  <td className="border border-gray-200 px-4 py-3">
+                <tr key={idx} className="bg-white even:bg-gray-50">
+                  <td className="border px-4 py-3">
                     {decodeURIComponent(item.question)}
                   </td>
-                  <td className="border border-gray-200 px-4 py-3">
-                    {item.selected}
-                  </td>
-                  <td className="border border-gray-200 px-4 py-3">
-                    {item.correct}
-                  </td>
-                  <td className="border border-gray-200 px-4 py-3 text-center">
+                  <td className="border px-4 py-3">{item.selected}</td>
+                  <td className="border px-4 py-3">{item.correct}</td>
+                  <td className="border px-4 py-3 text-center">
                     {item.selected === item.correct ? "✅" : "❌"}
                   </td>
                 </tr>
