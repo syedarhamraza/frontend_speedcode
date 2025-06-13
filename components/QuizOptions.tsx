@@ -50,7 +50,7 @@ export default function QuizOptions() {
 
   if (!user) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white px-4">
+      <div className="flex items-center justify-center  px-4">
         <div className="bg-white border border-gray-300 p-6 rounded-lg shadow-md text-center max-w-md w-full space-y-4">
           <h2 className="text-2xl font-semibold text-gray-800">Hold on!</h2>
           <p className="text-gray-600">
@@ -67,7 +67,7 @@ export default function QuizOptions() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-white px-4 py-12 text-black">
+    <main className="flex items-center justify-center  px-4 py-12 text-black">
       <div className="max-w-md w-full bg-white border border-gray-200 rounded-lg shadow-md p-6 sm:p-8 space-y-6">
         <div className="space-y-1 text-center">
           <h2 className="text-3xl font-bold">Customize Your Quiz</h2>
