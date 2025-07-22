@@ -1,4 +1,4 @@
-# 🚀 Student Leaderboard – Updated Full-Stack Web App
+# 🚀 Quiz Sprint – Updated Full-Stack Web App
 
 This project is a refined version of the Student Leaderboard web application, built with Next.js, Tailwind CSS, ShadCN UI on the frontend and Express.js, Node.js, and MySQL on the backend.
 
@@ -10,7 +10,7 @@ Frontend: Next.js App Router, Tailwind CSS, ShadCN UI
 
 Backend: Node.js, Express.js
 
-Database: MySQL
+Database: MongoDB
 
 Auth: Session-based authentication (express-session + cookies)
 
